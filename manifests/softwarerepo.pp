@@ -6,21 +6,13 @@
 #
 # <https://forge.puppetlabs.com/puppetlabs/apt>
 #
-class ksplice::softwarerepo
-(
-    $proxy_url
-)
-{
+class ksplice::softwarerepo {
 
     if $::operatingsystem == 'Ubuntu' {
 
         apt::key { 'ksplice-aptrepo':
             key               => 'B6D4038E',
             key_source        => 'https://www.ksplice.com/apt/ksplice-archive.asc',
-            key_options       => $proxy_url ? {
-                'none'        => undef,
-                default       => "http-proxy=\"$proxy_url\"",
-            },
         }
 
         apt::source { 'ksplice-aptrepo':

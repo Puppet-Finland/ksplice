@@ -18,10 +18,10 @@
 # [*accesskey*]
 #   The Ksplice Uptrack access key for this host.
 # [*proxy_url*]
-#   The proxy URL used for fetching the ksplice software repository public 
-#   keys. For example "http://proxy.domain.com:8888". Not needed if the node has 
-#   direct Internet connectivity, or if you're installing ksplice from your 
-#   operating system repositories. Defaults to 'none' (do not use a proxy).
+#   The proxy URL used with ksplice. For example "http://proxy.domain.com:8888". 
+#   Not needed if the node has direct Internet connectivity, or if you're 
+#   installing ksplice from your operating system repositories. Defaults to 
+#   'none' (do not use a proxy).
 #
 # == Examples
 #
@@ -39,16 +39,13 @@
 class ksplice
 (
     $accesskey,
-    $proxy_url = 'none',
+    $proxy_url = 'none'
 )
 {
 # Rationale for this is explained in init.pp of the sshd module
 if hiera('manage_ksplice', 'true') != 'false' {
 
-    class { 'ksplice::softwarerepo':
-        proxy_url => $proxy_url,
-    }
-
+    include ksplice::softwarerepo
     include ksplice::install
 
     class { 'ksplice::config':

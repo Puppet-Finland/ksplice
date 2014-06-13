@@ -6,10 +6,9 @@
 class ksplice::config
 (
     $accesskey,
-    $proxy_url,
+    $proxy_url
 )
 {
-
     file { 'ksplice-uptrack.conf':
         ensure => present,
         name => '/etc/uptrack/uptrack.conf',
