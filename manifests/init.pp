@@ -7,6 +7,12 @@
 # <https://forge.puppetlabs.com/puppetlabs/apt>
 # <https://forge.puppetlabs.com/puppetlabs/stdlib>
 #
+# WARNING: Oracle has bastardized ksplice for platforms other than "Oracle 
+# Unbreakable Linux". The Ubuntu version of ksplice pulls with it tons of 
+# desktop dependencies, thus rendering it useless on servers. Circumventing 
+# these restrictions would probably violate the kpslice EULA. Therefore this 
+# module is pretty much useless and available here only for reference.
+#
 # == Parameters
 #
 # [*accesskey*]
