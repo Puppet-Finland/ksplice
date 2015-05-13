@@ -1,11 +1,7 @@
 #
 # == Class: ksplice
 #
-# Install and configure ksplice. This module depends on the "puppetlabs/apt"
-# and "puppetlabs/stdlib" modules:
-#
-# <https://forge.puppetlabs.com/puppetlabs/apt>
-# <https://forge.puppetlabs.com/puppetlabs/stdlib>
+# Install and configure ksplice.
 #
 # WARNING: Oracle has bastardized ksplice for platforms other than "Oracle 
 # Unbreakable Linux". The Ubuntu version of ksplice pulls with it tons of 
@@ -15,6 +11,8 @@
 #
 # == Parameters
 #
+# [*manage*]
+#   Manage ksplice with Puppet. Valid values are 'yes' (default) and 'no'.
 # [*accesskey*]
 #   The Ksplice Uptrack access key for this host.
 # [*proxy_url*]
@@ -38,17 +36,17 @@
 #
 class ksplice
 (
+    $manage = 'yes',
     $accesskey,
     $proxy_url = 'none'
 )
 {
-# Rationale for this is explained in init.pp of the sshd module
-if hiera('manage_ksplice', 'true') != 'false' {
+if $manage == 'yes' {
 
-    include ksplice::softwarerepo
-    include ksplice::install
+    include ::ksplice::softwarerepo
+    include ::ksplice::install
 
-    class { 'ksplice::config':
+    class { '::ksplice::config':
         accesskey => $accesskey,
         proxy_url => $proxy_url,
     }

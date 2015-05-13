@@ -6,8 +6,8 @@
 class ksplice::install {
 
     package { 'ksplice-uptrack':
-        name => 'ksplice',
-        ensure => installed,
+        ensure  => installed,
+        name    => 'ksplice',
         require => Class['ksplice::softwarerepo'],
     }
 

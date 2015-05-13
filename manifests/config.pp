@@ -10,12 +10,12 @@ class ksplice::config
 )
 {
     file { 'ksplice-uptrack.conf':
-        ensure => present,
-        name => '/etc/uptrack/uptrack.conf',
+        ensure  => present,
+        name    => '/etc/uptrack/uptrack.conf',
         content => template('ksplice/uptrack.conf.erb'),
-        owner => root,
-        group => adm,
-        mode => 640,
+        owner   => root,
+        group   => adm,
+        mode    => '0640',
     }
 
 }

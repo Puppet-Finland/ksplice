@@ -10,19 +10,18 @@ class ksplice::softwarerepo {
 
     if $::operatingsystem == 'Ubuntu' {
 
-        apt::key { 'ksplice-aptrepo':
-            key               => 'B6D4038E',
-            key_source        => 'https://www.ksplice.com/apt/ksplice-archive.asc',
-        }
-
         apt::source { 'ksplice-aptrepo':
-            location          => 'http://www.ksplice.com/apt',
-            release           => "${::lsbdistcodename}",
-            repos             => 'ksplice',
-            required_packages => undef,
-            pin               => '501',
-            include_src       => true,
-            require => Apt::Key['ksplice-aptrepo'],
+            location => 'http://www.ksplice.com/apt',
+            release  => $::lsbdistcodename,
+            repos    => 'ksplice',
+            pin      => '501',
+            key      => {
+                'id'     => '5DE2D4F255E23055D3C40F2CF7CA6265B6D4038E',
+                'source' => 'https://www.ksplice.com/apt/ksplice-archive.asc',
+            },
+            include  => {
+                'deb' => true,
+            }
         }
     }
 }

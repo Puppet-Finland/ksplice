@@ -1,0 +1,13 @@
+{
+  "name": "puppetfinland-ksplice",
+  "version": "0.2.1",
+  "author": "Puppet-Finland team",
+  "license": "BSD license",
+  "summary": "Setup ksplice",
+  "source": "https://github.com/Puppet-Finland/ksplice.git",
+  "project_page": "https://github.com/Puppet-Finland/ksplice",
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": ">= 4.0.0" },
+    { "name": "puppetlabs/apt", "version_requirement": ">= 2.0.0" }
+  ]
+}
